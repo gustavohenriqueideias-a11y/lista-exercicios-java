@@ -22,22 +22,32 @@ public class Estudante {
         for (double nota : this.notas) {
             soma += nota;
         }
-        return soma / 5.0;
+        return soma / 5;
     }
 
-    public String getNome() {
-        return this.nome;
+    public double calculaMedia(int[] pesos) {
+        double soma = 0;
+        int somaPesos = 0;
+        for (int i = 0; i < 5; i++) {
+            soma += this.notas[i] * pesos[i];
+            somaPesos += pesos[i];
+        }
+        return soma / somaPesos;
     }
 
     public double[] getNotas() {
         return this.notas;
     }
 
+    public String getNome() {
+        return this.nome;
+    }
+
     public double menorNota() {
         double menor = this.notas[0];
-        for (int i = 1; i < 5; i++) {
-            if (this.notas[i] < menor) {
-                menor = this.notas[i];
+        for (double nota : this.notas) {
+            if (nota < menor) {
+                menor = nota;
             }
         }
         return menor;
